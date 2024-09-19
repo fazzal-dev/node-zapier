@@ -1,12 +1,10 @@
 {
-  "name": "zapier",
+  "name": "node-zapier",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "nodemon src/index.ts",
-    "build": "tsc",
-    "vercel-build": "echo hello"
+    "start": "node api/index.ts",
+    "dev": "nodemon api/index.ts"
   },
   "keywords": [],
   "author": "",
