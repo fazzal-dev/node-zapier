@@ -14,8 +14,8 @@ This project is a TypeScript Node.js backend application that provides user mana
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/yourusername/node-zapier.git
+   cd node-zapier.git
    ```
 
 2. Install dependencies:
