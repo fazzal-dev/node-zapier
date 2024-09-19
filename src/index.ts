@@ -1,10 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
 import axios from "axios";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
+app.use(cors());
 
 const port = process.env.PORT || 3000;
 const zapierWebHook = process.env.ZAPIER_WEBHOOK_URL;
