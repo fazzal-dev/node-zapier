@@ -27,6 +27,9 @@ const userData: UserData[] = [];
 
 app.post("/user", (req, res) => {
   const { name, email } = req.body;
+  if (!name || !email) {
+    return res.status(400).json({ error: "Name and email are required" });
+  }
   const id = Date.now().toString();
   const newUser: User = { id, name, email };
   users.push(newUser);
@@ -36,6 +39,14 @@ app.post("/user", (req, res) => {
 app.post("/user/:id/data", async (req, res) => {
   const { id } = req.params;
   const data = req.body;
+  if (!data) {
+    return res.status(400).json({ error: "Data is required" });
+  }
+
+  if (!users.find((user) => user.id === id)) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
   const newUserData: UserData = { userId: id, data };
   userData.push(newUserData);
 
@@ -52,6 +63,11 @@ app.post("/user/:id/data", async (req, res) => {
 
 app.get("/user/:id/data", (req, res) => {
   const { id } = req.params;
+
+  if (!users.find((user) => user.id === id)) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
   const userDataItems = userData.filter((item) => item.userId === id);
   res.json(userDataItems);
 });
